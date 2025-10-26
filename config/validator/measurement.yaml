@@ -1,0 +1,25 @@
+App\Entity\Measurement:
+    properties:
+        date:
+            - NotNull:
+                  message: 'Podaj datę pomiaru.'
+                  groups: [create]
+            - GreaterThanOrEqual:
+                  value: 'today'
+                  message: 'Data nie może być z przeszłości.'
+                  groups: [create, edit]
+
+        celsius:
+            - NotNull:
+                  message: 'Podaj temperaturę.'
+                  groups: [create]
+            - Range:
+                  min: -60
+                  max: 60
+                  notInRangeMessage: 'Temperatura musi być między {{ min }} a {{ max }} °C.'
+                  groups: [create, edit]
+
+        location:
+            - NotNull:
+                  message: 'Wybierz lokalizację.'
+                  groups: [create, edit]
