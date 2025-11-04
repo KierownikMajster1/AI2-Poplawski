@@ -30,5 +30,10 @@
             <a href="{{ path('app_location_index') }}">Locations</a>
             <a href="{{ path('app_measurement_index') }}">Measurements</a>
         {% endblock %}
+    {% if is_granted('ROLE_USER') %}
+        <a href="{{ path('app_logout') }}">Logout</a>
+    {% else %}
+        <a href="{{ path('app_login') }}">Login</a>
+    {% endif %}
     </body>
 </html>
